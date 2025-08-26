@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/your_database?currentSchema=badminton
+    username: postgres
+    password: your_password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update # ho?c 'validate' khi deploy production
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  kafka:
+    producer:
+      retries: 3
+      bootstrap-servers: localhost:9092
+#    consumer:
+#      group-id: saga-group
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+server:
+  port: 8088
+
+
+logging :
+  level :
+    org.springframework.security : DEBUG
+
+
